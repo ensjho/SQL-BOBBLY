@@ -21,6 +21,9 @@ class User(db.Model):
   first_name = db.Column(db.String(50), nullable = False)
   last_name = db.Column(db.String(50), nullable = False)
   image_url = db.Column(db.String(), nullable = False)
+
+  posts= db.relationship("Post", backref = "user")
+  
 # suggested default URL: https://giphy.com/embed/l0Ex7SHlSIDcmYbBu
 
 

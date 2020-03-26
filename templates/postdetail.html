@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %} {{ post.title }} {% endblock %%}
+{% block title %} {{ post.title }} {% endblock %}
 
 {% block content %}
 
@@ -9,8 +9,9 @@
   <p> {{ post.content }} </p>
   <div> By {{post.user.first_name}} {{post.user.last_name}} </div>
   
-  <a href="/users/{{user.id}}"><button class = "post_cancel"> Cancel </button></a>
+  <a href="/users/{{post.user.id}}"><button class = "post_cancel"> Cancel </button></a>
   <a href="/posts/{{post.id}}/edit"><button class = "post_edit"> Edit </button></a>
-<a href="/posts/{{post.id}}/delete"><button class = "post_delete"> Delete </button></a>
-
+  <form action="/posts/{{post.id}}/delete" method="POST">
+    <input type="submit" value="Delete"> 
+  </form> 
 {% endblock %}
