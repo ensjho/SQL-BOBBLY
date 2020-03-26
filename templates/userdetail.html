@@ -4,6 +4,10 @@
 <img src={{user.image_url}} alt="">
 <div class = "name">{{user.first_name}} {{user.last_name}}</div>
 <a href="/users/{{user.id}}/edit"><button class = "edit"> Edit </button></a>
+<a href="/users/{{user.id}}/posts/new"><button class = "newpost"> Add Post </button></a>
+
+
+
 <form action="/users/{{user.id}}/delete" method="POST">
   <input type="submit" value="Delete"> 
 </form>
