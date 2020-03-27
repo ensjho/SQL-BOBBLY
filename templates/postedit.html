@@ -11,9 +11,16 @@
     <div> Title </div>
     <input name="title" value="{{post.title}}">
     <div> Content</div>
-    <input name="content" value="{{post.content}}">
+    <input name="content" value="{{post.content}}"><br>
+    {% for tag in tags %}
+      
+      <input type = "checkbox" name="{{tag.name}}" value="{{tag.name}}">
+      <label for="{{tag.name}}">{{tag.name}}</label><br>
+    
+    {% endfor %}
     <a href="/posts/{{post.id}}" class = "cancel_btn">cancel</a>
-    <input type="submit" value="Save" class = "save_btn">  
+    <input type="submit" value="Save" class = "save_btn"> 
+
   </form> 
 </div>
 

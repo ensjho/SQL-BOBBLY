@@ -23,7 +23,7 @@ class User(db.Model):
   image_url = db.Column(db.String(), nullable = False)
 
   posts= db.relationship("Post", backref = "user")
-  
+
 # suggested default URL: https://giphy.com/embed/l0Ex7SHlSIDcmYbBu
 
 
@@ -39,4 +39,22 @@ class Post(db.Model):
   user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable = False)
 
   # do representative 
+
+class Tag(db.Model):
+  """ Tag."""
+
+  __tablename__ = "tags"
+
+  id = db.Column(db.Integer, primary_key = True, autoincrement = True)
+  name = db.Column(db.String(10), nullable = False)
+  
+  posts= db.relationship("Post", secondary="posttags", backref = "tag")
+
+class PostTag(db.Model):
+  """Post-Tag linking table"""
+
+  __tablename__ = "posttags"
+
+  post_id = db.Column(db.Integer, db.ForeignKey("posts.id"), primary_key = True)
+  tag_id = db.Column(db.Integer, db.ForeignKey("tags.id"), primary_key = True)
 
